@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <bean id="memcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
+        <property name="connectionPoolSize" value="${memcached.connectionPoolSize}" />
+        <property name="failureMode" value="${memcached.failureMode}" />
+        <property name="commandFactory">
+            <bean class="net.rubyeye.xmemcached.command.TextCommandFactory" />
+        </property>
+        <property name="sessionLocator">
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator" />
+        </property>
+        <property name="transcoder">
+            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+        </property>
+        <constructor-arg>
+            <list>
+                <bean class="java.net.InetSocketAddress">
+                    <constructor-arg>
+                        <value>${memcached.server1.host}</value>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <value>${memcached.server1.port}</value>
+                    </constructor-arg>
+                </bean>
+                <!--<bean class="java.net.InetSocketAddress">-->
+                    <!--<constructor-arg>-->
+                        <!--<value>${memcached.server2.host}</value>-->
+                    <!--</constructor-arg>-->
+                    <!--<constructor-arg>-->
+                        <!--<value>${memcached.server2.port}</value>-->
+                    <!--</constructor-arg>-->
+                <!--</bean>-->
+                <!--<bean class="java.net.InetSocketAddress">-->
+                    <!--<constructor-arg>-->
+                        <!--<value>${memcached.server3.host}</value>-->
+                    <!--</constructor-arg>-->
+                    <!--<constructor-arg>-->
+                        <!--<value>${memcached.server3.port}</value>-->
+                    <!--</constructor-arg>-->
+                <!--</bean>-->
+                <!--<bean class="java.net.InetSocketAddress">-->
+                    <!--<constructor-arg>-->
+                        <!--<value>${memcached.server4.host}</value>-->
+                    <!--</constructor-arg>-->
+                    <!--<constructor-arg>-->
+                        <!--<value>${memcached.server4.port}</value>-->
+                    <!--</constructor-arg>-->
+                <!--</bean>-->
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <list>
+                <value>${memcached.server1.weight}</value>
+                <!--<value>${memcached.server2.weight}</value>-->
+                <!--<value>${memcached.server3.weight}</value>-->
+                <!--<value>${memcached.server4.weight}</value>-->
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean
+        id="memcachedClient"
+        factory-bean="memcachedClientBuilder"
+        factory-method="build"
+        destroy-method="shutdown" />
+    <bean id="memcachedService" class="top.u8u.base.service.impl.MemcachedServiceXmemcachedImpl">
+        <property name="memcachedClient"><ref bean="memcachedClient"/></property>
+    </bean>
+</beans>

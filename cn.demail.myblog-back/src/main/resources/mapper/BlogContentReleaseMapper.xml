@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.u8u.db.mapper.BlogContentReleaseMapper">
+    <resultMap id="BaseResultMap" type="top.u8u.db.domain.BlogContentRelease">
+        <id property="id" column="ID" jdbcType="BIGINT"/>
+        <result property="delFlag" column="DEL_FLAG" jdbcType="TINYINT"/>
+        <result property="original" column="ORIGINAL" jdbcType="TINYINT"/>
+        <result property="digest" column="DIGEST" jdbcType="VARCHAR"/>
+        <result property="readerCount" column="READER_COUNT" jdbcType="INTEGER"/>
+        <result property="title" column="TITLE" jdbcType="VARCHAR"/>
+        <result property="keyWord" column="KEY_WORD" jdbcType="VARCHAR"/>
+        <result property="uri" column="URI" jdbcType="VARCHAR"/>
+        <result property="cTime" column="C_TIME" jdbcType="DATE"/>
+        <result property="typeId" column="TYPE_ID" jdbcType="BIGINT"/>
+        <result property="dateId" column="DATE_ID" jdbcType="BIGINT"/>
+        <result property="blogContentId" column="BLOG_CONTENT_ID" jdbcType="BIGINT"/>
+        <result property="htmlContentId" column="HTML_CONTENT_ID" jdbcType="BIGINT"/>
+    </resultMap>
+    <select id="getByBlogContenId" resultMap="BaseResultMap">
+    SELECT *
+    FROM BLOG_CONTENT_RELEASE
+    WHERE BLOG_CONTENT_ID = #{id}
+    </select>
+
+    <update id="addReaderCount">
+        UPDATE BLOG_CONTENT_RELEASE
+        SET READER_COUNT = READER_COUNT + #{count}
+        WHERE ID = #{id}
+    </update>
+
+    <update id="updateByIdPhysics">
+        UPDATE BLOG_CONTENT_RELEASE
+        SET DEL_FLAG = #{delFlag},
+        ORIGINAL = #{original},
+        DIGEST = #{digest},
+        READER_COUNT = #{readerCount},
+        TITLE = #{title},
+        KEY_WORD = #{keyWord},
+        URI = #{uri},
+        TYPE_ID = #{typeId},
+        DATE_ID = #{dateId},
+        C_TIME = #{cTime},
+        BLOG_CONTENT_ID = #{blogContentId},
+        HTML_CONTENT_ID = #{htmlContentId}
+        WHERE ID = #{id}
+    </update>
+</mapper>

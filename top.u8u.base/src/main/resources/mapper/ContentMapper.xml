@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.u8u.db.mapper.ContentMapper">
+    <delete id="deletePhysics">
+        DELETE FROM CONTENT
+        WHERE ID IN
+        <foreach item="id" index="index" collection="ids"
+                 open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:config/baseConfig.properties" />
+    <import resource="spring-memchched-module.xml"/>
+    <bean id="ossClient" class="com.aliyun.oss.OSSClient" destroy-method="shutdown">
+        <constructor-arg index="0" type="java.lang.String" value="${oss.endpoint}"/>
+        <constructor-arg index="1" type="java.lang.String" value="${oss.accessKeyId}"/>
+        <constructor-arg index="2" type="java.lang.String" value="${oss.accessKeySecret}"/>
+    </bean>
+
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+        <!--1024为1K,此处为10M-->
+        <property name="maxUploadSize" value="10485760" />
+    </bean>
+
+</beans>

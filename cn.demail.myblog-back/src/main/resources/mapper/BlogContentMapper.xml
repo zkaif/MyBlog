@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.u8u.db.mapper.BlogContentMapper">
+    <!--<resultMap id="BaseResultMap" type="top.u8u.db.domain.BlogContent">-->
+        <!--<id property="id" column="ID" jdbcType="BIGINT"/>-->
+        <!--<result property="delFlag" column="DEL_FLAG" jdbcType="TINYINT"/>-->
+        <!--<result property="date" column="DATE" jdbcType="DATE"/>-->
+        <!--<result property="digest" column="DIGEST" jdbcType="VARCHAR"/>-->
+        <!--<result property="original" column="ORIGINAL" jdbcType="TINYINT"/>-->
+        <!--<result property="brouillon" column="BROUILLON" jdbcType="TINYINT"/>-->
+        <!--<result property="readerCount" column="READER_COUNT" jdbcType="INTEGER"/>-->
+        <!--<result property="title" column="TITLE" jdbcType="VARCHAR"/>-->
+        <!--<result property="dateId" column="DATE_ID" jdbcType="INTEGER"/>-->
+        <!--<result property="typeId" column="TYPE_ID" jdbcType="INTEGER"/>-->
+        <!--<result property="keyWord" column="KEY_WORD" jdbcType="VARCHAR"/>-->
+        <!--<result property="content" column="CONETNT" jdbcType="VARCHAR"/>-->
+    <!--</resultMap>-->
+    <!--<select id="getDescByReaderCount" resultMap="BaseResultMap">-->
+        <!--SELECT *-->
+        <!--FROM BLOG_CONTENT-->
+        <!--WHERE DEL_FLAG = FALSE-->
+        <!--ORDER BY READER_COUNT DESC-->
+        <!--LIMIT #{count}-->
+    <!--</select>-->
+
+    <!--<update id="readerCountAdd">-->
+        <!--UPDATE BLOG_CONTENT SET READER_COUNT = READER_COUNT+1 WHERE id = #{id};-->
+    <!--</update>-->
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.u8u.db.mapper.DateTypeMapper">
+    <resultMap id="BaseResultMap" type="top.u8u.db.domain.DateType">
+        <id property="id" column="ID" jdbcType="BIGINT"/>
+        <result property="delFlag" column="DEL_FLAG" jdbcType="TINYINT"/>
+        <result property="date" column="DATE" jdbcType="DATE"/>
+    </resultMap>
+    <select id="getByDate" resultMap="BaseResultMap">
+        SELECT *
+        FROM DATE_TYPE
+        where
+        DEL_FLAG = 0 AND
+        date_format(DATE,'%Y-%m') = date_format(#{date},'%Y-%m');
+    </select>
+</mapper>
