@@ -22,7 +22,7 @@ public abstract class StroageServiceAliImpl implements IStroageService{
     @Autowired
     protected OSSClient ossClient;
     @Value("${oss.bucket.name}")
-    private static String OSS_BUCKET_NAME = "";
+    private String OSS_BUCKET_NAME;
 
     @Override
     public Content saveStringToContent(String contentStr, String path, String suffix) {

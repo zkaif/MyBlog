@@ -13,7 +13,6 @@ import java.util.Date;
  * Created by dim on 17-9-15.
  */
 
-@Transactional
 @TableName("COMMENT")
 public class Comment extends BaseDomainTree{
     private static final long serialVersionUID = 8923659825765771254L;

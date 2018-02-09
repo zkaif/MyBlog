@@ -17,12 +17,11 @@
      http://www.springframework.org/schema/tx
       http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:config/sso.properties" />
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:config/config.properties" />
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:config/sso.properties"/>
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:config/config.properties"/>
     <tx:annotation-driven/>
     <!-- 自动扫描的包名 -->
-    <context:component-scan base-package="cn.demail.myblog">
+    <context:component-scan base-package="top.u8u.sso">
     </context:component-scan>
     <!-- 默认的注解映射的支持，自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
 
