@@ -8,5 +8,5 @@
 
 [演示网站www.zhoukaifan.com](https://www.zhoukaifan.com/)
 
-[>>>>开发文档下载<<<<](https://github.com/zkaif/MyBlog/blob/master/SOA%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F-%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.doc)
+[>>>>开发文档下载<<<<](https://github.com/zkaif/MyBlog/blob/master/SOA%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F-%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.pdf)
 
